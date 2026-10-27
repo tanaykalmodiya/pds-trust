@@ -1,58 +1,220 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# PDS Trust
+### A Transparent and Accountable Public Distribution System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Hack for Social Cause | Viksit Bharat Young Leaders Dialogue 2027**
 
-## About Laravel
+**Theme:** Governance & Civic Technology
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 1. Project Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+PDS Trust is a web-based prototype designed to improve transparency, accountability, and citizen participation in India's Public Distribution System (PDS).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+It provides a common digital platform for government officials, Fair Price Shop (FPS) operators, and beneficiaries to monitor ration stock movements, verify food grain distribution, identify discrepancies, and manage grievances.
 
-## Learning Laravel
+The project aims to reduce opportunities for ration diversion and help eligible households receive their full entitlements.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 2. Problem Statement
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+The Public Distribution System provides subsidized food grains to eligible households. However, gaps in stock accountability, limited beneficiary verification, and difficulties in tracking grievances can make it challenging to identify and resolve distribution irregularities.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+PDS Trust addresses these challenges through digital records, independent beneficiary confirmations, and discrepancy reporting.
 
-## Agentic Development
+## 3. Key Features
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### Government Official
+- Monitor ration stock records and acknowledgements.
+- View reported stock and distribution discrepancies.
+- Review beneficiary grievances.
+- Update complaint status and responses.
+
+### Fair Price Shop Owner
+- View stock allocations.
+- Acknowledge actual stock received.
+- Report stock shortages through recorded quantities.
+- Record ration distributions to beneficiaries.
+
+### Beneficiary
+- View ration distribution records.
+- Confirm the actual quantity received.
+- Report discrepancies between recorded and received quantities.
+- Submit grievances and track their status.
+
+### Additional Functionality
+- Role-based authentication and dashboards.
+- Automatic identification of quantity mismatches.
+- Simulated SMS-based beneficiary verification.
+- Centralized database records.
+
+**Note:** SMS functionality is currently a simulator. The prototype does not send real SMS messages.
+
+## 4. Technology Stack
+
+| Component | Technology |
+|---|---|
+| Backend | PHP, Laravel 13 |
+| Database | MySQL |
+| Frontend | Laravel Blade, HTML, CSS, JavaScript |
+| Authentication | Laravel authentication and role-based authorization |
+| Testing | PHPUnit / Laravel testing framework |
+| Version Control | Git and GitHub |
+
+## 5. System Architecture
+
+PDS Trust follows Laravel's Model-View-Controller (MVC) architecture.
+
+The three user roles interact with a Laravel web application. Application controllers process stock records, ration confirmations, discrepancy checks, and grievance requests. MySQL stores the corresponding data.
+
+For a detailed architecture document and diagrams, see `docs/TECHNICAL_DESIGN.md` once added.
+
+## 6. Installation and Setup
+
+### Prerequisites
+
+- PHP compatible with the project's Laravel version
+- Composer
+- MySQL
+- Node.js and npm
+
+### Clone the Repository
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/tanaykalmodiya/pds-trust.git
+cd pds-trust
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### Install Dependencies
 
-## Contributing
+```bash
+composer install
+npm install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Configure Environment
 
-## Code of Conduct
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Update the database configuration in `.env`:
 
-## Security Vulnerabilities
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=pds_trust
+DB_USERNAME=your_mysql_username
+DB_PASSWORD=your_mysql_password
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Create a MySQL database named `pds_trust`, or update `DB_DATABASE` to match your chosen database.
 
-## License
+### Run Database Migrations
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan migrate
+```
+
+If sample-data seeders are provided, run them using the instructions in the repository's sample-data documentation.
+
+### Start the Application
+
+In one terminal:
+
+```bash
+php artisan serve
+```
+
+In another terminal:
+
+```bash
+npm run dev
+```
+
+Open:
+
+`http://127.0.0.1:8000`
+
+## 7. Prototype Workflow
+
+**Stock Verification**
+
+1. A government stock allocation is recorded.
+2. The FPS owner acknowledges the quantity actually received.
+3. The application identifies differences between allocated and received quantities.
+4. Government officials can review the discrepancy.
+
+**Ration Distribution Verification**
+
+1. The FPS owner records a ration distribution.
+2. The beneficiary verifies the actual quantity received.
+3. The application compares both quantities.
+4. A mismatch is flagged for review.
+
+**Grievance Management**
+
+1. A beneficiary submits a grievance.
+2. A government official reviews the complaint.
+3. The official updates its status and response.
+4. The beneficiary tracks the outcome.
+
+## 8. Testing
+
+Run the Laravel test suite using:
+
+```bash
+php artisan test
+```
+
+The prototype includes automated tests for basic application behavior and role-based route access.
+
+Additional end-to-end testing is recommended before production deployment.
+
+## 9. Sample Data
+
+Demonstration scenarios can illustrate stock shortages and ration distribution discrepancies using fictional records.
+
+Only synthetic data should be used in public demonstrations. Real beneficiary personal information and authentication credentials must not be committed to this repository.
+
+## 10. Expected Impact
+
+PDS Trust aims to:
+
+- Improve transparency in ration stock movement and distribution.
+- Identify potential shortages and irregularities earlier.
+- Strengthen beneficiary participation.
+- Support more accountable grievance resolution.
+- Promote fairer access to subsidized food grains.
+
+These are intended outcomes. Real-world impact has not yet been established through a field deployment.
+
+## 11. UN Sustainable Development Goals
+
+- **SDG 2 – Zero Hunger**
+- **SDG 10 – Reduced Inequalities**
+- **SDG 16 – Peace, Justice and Strong Institutions**
+
+## 12. Current Limitations
+
+PDS Trust is a demonstration prototype, not an officially deployed government service.
+
+- SMS verification is simulated.
+- Real PDS government systems are not integrated.
+- Production-scale security and performance have not been validated.
+- Field impact has not yet been measured.
+
+## 13. Future Scope
+
+- Integration with authorized government PDS systems.
+- Real SMS and accessible voice-based verification.
+- Improved multilingual accessibility.
+- Enhanced reporting and analytics.
+- Pilot testing with relevant stakeholders.
+
+## 14. Repository
+
+**Source Code:** https://github.com/tanaykalmodiya/pds-trust
+
+## 15. License
+
+An open-source license will be added in the repository's `LICENSE` file.
