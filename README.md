@@ -60,11 +60,18 @@ PDS Trust addresses these challenges through digital records, independent benefi
 
 ## 5. System Architecture
 
-PDS Trust follows Laravel's Model-View-Controller (MVC) architecture.
+PDS Trust is designed using Laravel's Model-View-Controller (MVC) architecture, with MySQL for data storage.
 
-The three user roles interact with a Laravel web application. Application controllers process stock records, ration confirmations, discrepancy checks, and grievance requests. MySQL stores the corresponding data.
+The system supports three primary roles: Beneficiary, Fair Price Shop (FPS) Owner, and Government Official.
 
-For a detailed architecture document and diagrams, see `docs/TECHNICAL_DESIGN.md` once added.
+### Technical Documentation
+
+The following documents describe the proposed system requirements, architecture, database design, and workflows:
+
+- 📄 **[Software Requirements Specification (SRS)](docs/srs.pdf)** — Functional and non-functional requirements, user roles, system workflows, and acceptance criteria.
+- 📐 **[Software Design Document (SDD)](docs/sdd.pdf)** — System architecture, database schema, UML diagrams, data-flow diagrams, verification workflows, and deployment design.
+
+**Note:** These documents describe the proposed MVP architecture. Some components represent planned functionality rather than features already implemented in the prototype.
 
 ## 6. Installation and Setup
 
